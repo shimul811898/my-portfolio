@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0084FF;
+  --color-background-light: #FFFFFF;
+  --color-background-dark: #0f172a;
+  
+  --font-display: "Inter", sans-serif;
+  --radius-default: 0.5rem;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", sans-serif;
+}
+
+/* Custom Gradients and Animations */
+.hero-gradient {
+  background: linear-gradient(90deg, transparent 65%, #f0f7ff 65%);
+}
+
+.dark .hero-gradient {
+  background: linear-gradient(90deg, transparent 65%, #1e293b 65%);
+}
+
+@media (max-width: 1024px) {
+  .hero-gradient {
+    background: transparent !important;
+  }
+  .dark .hero-gradient {
+    background: transparent !important;
+  }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Card decorations for About Page */
+.glow-border {
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.dark .glow-border {
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.glow-border:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 35px -5px rgba(59, 130, 246, 0.15);
+}
+
+.dark .glow-border:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+}
+
+.neon-text {
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.dark .neon-text {
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+}
+
+.card-gradient {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  transition: background 0.3s;
+}
+
+.dark .card-gradient {
+  background: linear-gradient(145deg, #0d1527 0%, #070d19 100%);
+}
+
+.tech-stack-icon {
+  background: rgba(59, 130, 246, 0.03);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.dark .tech-stack-icon {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.tech-stack-icon:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Expertise Page — Material Design 3 tokens
+   ============================================ */
+.exp-page {
+  --exp-bg:               #101415;
+  --exp-surface:          #1d2022;
+  --exp-surface-low:      #191c1e;
+  --exp-surface-high:     #272a2c;
+  --exp-surface-variant:  #323537;
+  --exp-outline:          #849396;
+  --exp-outline-variant:  #3b494c;
+  --exp-on-bg:            #e0e3e5;
+  --exp-on-surface:       #e0e3e5;
+  --exp-on-surface-var:   #bac9cc;
+  --exp-primary:          #00daf3;
+  --exp-primary-fixed:    #9cf0ff;
+  --exp-primary-container:#00e5ff;
+  --exp-on-primary:       #00363d;
+  --exp-on-primary-cont:  #00626e;
+  --exp-secondary:        #bdc2ff;
+  --exp-sec-container:    #343d96;
+  --exp-on-sec-cont:      #a8afff;
+}
+
+/* Skill-row hover accent line */
+.skill-accent {
+  height: 1px;
+  width: 0;
+  background: var(--exp-primary);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.skill-row:hover .skill-accent {
+  width: 100%;
+}
+
+/* Material Symbols for expertise page */
+.ms-icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  transition: font-variation-settings 0.2s ease;
+}
+.skill-row:hover .ms-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Project image zoom */
+.proj-img-wrap img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+}
+.proj-img-wrap:hover img {
+  transform: scale(1.05);
+}
+
+/* Custom tiny scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 2px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #101415; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #3b494c; }
