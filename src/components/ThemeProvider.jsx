@@ -8,7 +8,6 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(null);
 
   useEffect(() => {
-    // Detect theme based on DOM state which was initialized by the blocking script
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
   }, []);

@@ -94,13 +94,11 @@ export default function Hero() {
 
   return (
     <main className="relative min-h-screen pt-24 lg:pt-20 flex items-center bg-slate-50 dark:bg-slate-950 overflow-hidden transition-colors duration-500">
-      {/* Glow Ambient layers */}
       <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-400/10 dark:bg-blue-500/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-cyan-400/10 dark:bg-cyan-500/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
         
-        {/* Left Typography Side */}
         <div className="space-y-8 max-w-xl lg:col-span-7 order-last lg:order-first text-center lg:text-left">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm shadow-sm">
@@ -111,7 +109,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-900 dark:text-white">
               I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400">MAHAFUZUR RAHMAN SHIMUL</span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-slate-700 dark:text-slate-300">
-                A Frontend Web Developer
+                A MERN Stack Web Developer
               </span>
             </h1>
           </div>
@@ -121,10 +119,13 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-blue-500/20 dark:shadow-none hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group">
+            <a 
+              href="mailto:mahafuzur181163@gmail.com?subject=Hi Shimul, Let's Connect!&body=Hello Shimul,"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-blue-500/20 dark:shadow-none hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group text-center"
+            >
               Contact Me
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            </a>
             
             <button className="w-full sm:w-auto border border-slate-200 dark:border-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
               Download Resume
@@ -133,12 +134,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Frame Graphics Side */}
         <div className="lg:col-span-5 flex justify-center items-center relative min-h-[440px] sm:min-h-[520px] lg:min-h-[620px]">
           
           <div className="absolute w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] rounded-full border border-slate-200/60 dark:border-slate-800/50 bg-gradient-to-tr from-slate-100/20 to-white/10 dark:from-slate-900/20 dark:to-slate-800/10 backdrop-blur-[2px] shadow-inner" />
 
-          {/* Map floating tech icons including HTML & CSS */}
           <div className="absolute inset-0 z-20 pointer-events-none">
             {techIcons.map((icon) => (
               <FloatingTechIcon
@@ -149,14 +148,12 @@ export default function Hero() {
               >
                 {icon.svg}
 
-                {/* Tooltip dynamic text structure */}
                 <span className="absolute bottom-full mb-2 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200 ease-out px-2.5 py-1 text-xs font-semibold text-slate-800 dark:text-slate-100 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-md shadow-lg whitespace-nowrap z-50">
                   {icon.name}
                 </span>
               </FloatingTechIcon>
             ))}
 
-            {/* Special Orange Block */}
             <FloatingTechIcon
               positionClasses="top-[32%] right-[28%]"
               delay="2.4s"
@@ -166,12 +163,11 @@ export default function Hero() {
             </FloatingTechIcon>
           </div>
 
-          {/* Main Portrait Box Mask */}
           <div className="relative w-[260px] h-[340px] sm:w-[340px] sm:h-[440px] lg:w-[360px] lg:h-[480px] flex items-end justify-center rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100/40 via-slate-50/20 to-transparent dark:from-slate-900/40 dark:via-slate-950/20 border border-white/20 dark:border-slate-800/30 shadow-2xl z-10">
             <img
               src="/assest/shimul.png"
               alt="Shimul"
-              className="h-[620px] object-contain transition-all duration-500 hover:scale-[1.03]"
+              className="rounded-full mb-15 object-contain transition-all duration-500 hover:scale-[1.03]"
             />
           </div>
 

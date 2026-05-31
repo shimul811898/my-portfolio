@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
 
-        {/* Theme Script */}
+      
         <script
           dangerouslySetInnerHTML={{
             __html: `

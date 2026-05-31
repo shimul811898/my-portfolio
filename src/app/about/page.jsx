@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import ThemeToggle from "@/components/ThemeToggle";
 
-// Custom brand icons since they are not present in newer Lucide releases
 const InstagramIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -33,10 +32,14 @@ export default function AboutPage() {
       company: "Personal Projects & Open Source",
       year: "2025 - Present",
     },
-   
+    {
+      title: "Marnt Stack Web Developer",
+      company: "Personal Projects & Open Source",
+      year: "2025",
+    },
     {
       title: "UI/UX Learner & Designer",
-      company: "Self Practice",
+      company: "Personal Projects & Open Source",
       year: "2025",
     },
   ];
@@ -48,23 +51,23 @@ export default function AboutPage() {
 
       <main className="pt-28 pb-16 min-h-screen px-4 md:px-8 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
         <div className="max-w-5xl mx-auto space-y-8">
-          
-          <header 
-            className="text-center space-y-4 opacity-0 animate-fade-in-up" 
+
+          <header
+            className="text-center space-y-4 opacity-0 animate-fade-in-up"
             style={{ animationDelay: "100ms", animationFillMode: "forwards" }}
           >
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
               About Me
             </h1>
             <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed px-4 max-w-xl mx-auto">
-              I’m a CSE student &  Frontend Web  Developer passionate about building modern, responsive, and scalable web applications.
+              I’m a CSE student &  Marnt Stack  Web Developer passionate about building modern, responsive, and scalable web applications.
             </p>
           </header>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            
-            <div 
-              className="lg:col-span-1 opacity-0 animate-fade-in-up lg:sticky lg:top-28" 
+
+            <div
+              className="lg:col-span-1 opacity-0 animate-fade-in-up lg:sticky lg:top-28"
               style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
             >
               <section className="card-gradient glow-border rounded-3xl p-6 flex flex-col items-center text-center space-y-6">
@@ -72,10 +75,10 @@ export default function AboutPage() {
                   <img
                     alt="Shimul Profile"
                     className="w-full h-full object-cover"
-                    src="/assest/shimul.png" 
+                    src="/assest/shimul.png"
                   />
                 </div>
-                
+
                 <div className="space-y-4 w-full">
                   <div className="flex justify-center">
                     <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[10px] font-semibold text-slate-600 dark:text-slate-300">
@@ -108,7 +111,7 @@ export default function AboutPage() {
                         <Icon className="w-5 h-5" />
                       </a>
                     ))}
-                  
+
                   </div>
 
                   <button className="w-full py-3 bg-primary hover:bg-blue-600 text-white rounded-2xl font-medium transition-all transform active:scale-95 shadow-lg shadow-blue-500/10 dark:shadow-none cursor-pointer">
@@ -119,8 +122,8 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-2 space-y-8">
-              
-              <section 
+
+              <section
                 className="card-gradient glow-border rounded-3xl p-6 space-y-4 opacity-0 animate-fade-in-up"
                 style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
               >
@@ -129,7 +132,7 @@ export default function AboutPage() {
                 </h3>
                 <div className="space-y-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                   <p>
-                    I am a passionate Computer Science & Engineering student and  Frontend Web  Developer focused on building high-quality web applications. I enjoy creating modern UI designs, smooth user experiences, and robust frontend systems.
+                    I am a passionate Computer Science & Engineering student and   MERN Stack Web Developer focused on building high-quality web applications. I enjoy creating modern UI designs, smooth user experiences, and robust frontend systems.
                   </p>
                   <p>
                     With a focus on clean components, scalable layouts, and collaborative structure, I love turning creative UI/UX designs into pixel-perfect and highly interactive web products.
@@ -137,7 +140,7 @@ export default function AboutPage() {
                 </div>
               </section>
 
-              <section 
+              <section
                 className="card-gradient glow-border rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 opacity-0 animate-fade-in-up"
                 style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
               >
@@ -148,6 +151,11 @@ export default function AboutPage() {
                   <div className="tech-stack-icon w-12 h-12 rounded-xl flex items-center justify-center" title="JavaScript">
                     <svg className="w-7 h-7 text-yellow-500 fill-yellow-500" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M3 3h18v18H3V3zm16.525 13.83c-.072-.387-.454-.635-.954-.635-.402 0-.641.199-.749.441-.186.449-.152.949.038 1.408.15.361.475.583.896.583.434 0 .734-.212.862-.574.062-.182.085-.381.077-.572-.002-.153-.027-.305-.07-.451zm-6.618 1.442c-.01.554.215 1.107.632 1.439.421.336 1.01.447 1.543.29.475-.14.85-.515.99-1.002.043-.146.068-.298.075-.451.008-.184-.012-.367-.061-.544-.122-.44-.458-.781-.884-.91-.184-.055-.38-.073-.574-.051-.316.035-.615.176-.844.394-.229.218-.363.518-.377.835z" />
+                    </svg>
+                  </div>
+                  <div className="tech-stack-icon w-12 h-12 rounded-xl flex items-center justify-center" title="Express.js">
+                    <svg className="w-8 h-8 text-slate-800 dark:text-slate-200" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M11.233 14.914c.2.378.524.673.978.673.477 0 .802-.34.834-.793h1.75c-.035 1.402-1.085 2.344-2.584 2.344-1.48 0-2.518-1.043-2.564-2.65h5.163c.038-1.607-1.118-2.65-2.617-2.65-1.474 0-2.49 1.103-2.49 2.65 0 1.623 1.04 2.65 2.53 2.65zm-.843-3.14h1.748c-.035-.48-.31-.793-.794-.793-.457 0-.773.3-.954.793zM2.853 14.018c0-.77-.525-1.15-1.394-1.15h-.8v2.3h.8c.87 0 1.394-.38 1.394-1.15zm-.853-2.777c0-.623-.424-.962-1.14-.962h-.795v1.923h.794c.717 0 1.14-.339 1.14-.961zm1.753 1.627c0 .69-.356 1.2-.98 1.442l1.1 2.05H2.871l-.946-1.89h-.615v1.89h-.89v-4.945h1.58c1.077 0 1.667.502 1.667 1.257l.086.196z" />
                     </svg>
                   </div>
                   <div className="tech-stack-icon w-12 h-12 rounded-xl flex items-center justify-center" title="Tailwind CSS">
@@ -168,7 +176,7 @@ export default function AboutPage() {
                 </div>
               </section>
 
-              <section 
+              <section
                 className="card-gradient glow-border rounded-3xl p-6 opacity-0 animate-fade-in-up"
                 style={{ animationDelay: "500ms", animationFillMode: "forwards" }}
               >
@@ -177,8 +185,8 @@ export default function AboutPage() {
                 </h3>
                 <div className="divide-y divide-slate-100 dark:divide-slate-800">
                   {experiences.map((exp, i) => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className="flex items-center justify-between py-4 group transition-colors duration-200"
                     >
                       <div className="space-y-1">
