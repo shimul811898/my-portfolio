@@ -17,7 +17,7 @@ export default function Header() {
       setScrolled(window.scrollY > 20);
 
       if (isHome) {
-        const sections = ["home", "about", "expertise", "education", "project", "blog"];
+        const sections = ["home", "about", "expertise", "education", "project", "github", "blog"];
         let current = "home";
         
         // Use scroll position relative to viewport offset for high-accuracy section detection
@@ -52,7 +52,7 @@ export default function Header() {
     { label: "Expertise", sectionId: "expertise", href: "/expertise" },
     { label: "Projects", sectionId: "project", href: "/project" },
     { label: "Education", sectionId: "education", href: "/education" },
-    { label: "Blog", sectionId: "blog", href: "/Blog" },
+    { label: "GitHub", sectionId: "github", href: "/github" },
   ];
 
   const handleNavClick = (e, link) => {

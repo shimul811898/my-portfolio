@@ -28,6 +28,12 @@ const XIcon = (props) => (
   </svg>
 );
 
+const FacebookIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.009 10.125 11.927v-8.437H7.078v-3.49h3.047V9.41c0-3.017 1.792-4.686 4.533-4.686 1.312 0 2.686.235 2.686.235v2.961h-1.514c-1.491 0-1.956.929-1.956 1.881v2.258h3.328l-.532 3.49h-2.796V24C19.612 23.082 24 18.092 24 12.073z" />
+  </svg>
+);
+
 export default function AboutPage() {
   const pathname = usePathname();
   const isStandalone = pathname === "/about";
@@ -60,8 +66,8 @@ export default function AboutPage() {
       )}
 
       <main className={`px-4 md:px-8 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300
-        ${isStandalone 
-          ? "pt-28 pb-16 min-h-screen" 
+        ${isStandalone
+          ? "pt-28 pb-16 min-h-screen"
           : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
         }`}
       >
@@ -114,8 +120,9 @@ export default function AboutPage() {
                   <div className="flex justify-center space-x-4">
                     {[
                       { Icon: InstagramIcon, href: "https://www.instagram.com/shimul._02?igsh=MTIwcTNvNXA2dzZiZA==", label: "Instagram" },
-                      { Icon: LinkedinIcon, href: "https://www.linkedin.com/in/md-mahafuzur-rahman-shimul-493665406/", label: "LinkedIn" },
+                      { Icon: LinkedinIcon, href: "https://www.linkedin.com/in/md-mahafuzur-rahman-shimul-493665406", label: "LinkedIn" },
                       { Icon: GithubIcon, href: "https://github.com/shimul811898", label: "GitHub" },
+                      { Icon: FacebookIcon, href: "https://www.facebook.com/shimul.islam.02",label: "Facebook"},
                     ].map(({ Icon, href, label }) => (
                       <a
                         key={label}
@@ -129,7 +136,7 @@ export default function AboutPage() {
 
                   </div>
 
-                  <a 
+                  <a
                     href="mailto:mahafuzur181163@gmail.com"
                     className="w-full block py-3 bg-primary hover:bg-blue-600 text-white rounded-2xl font-medium transition-all transform active:scale-95 shadow-lg shadow-blue-500/10 dark:shadow-none cursor-pointer"
                   >

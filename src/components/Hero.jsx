@@ -127,10 +127,16 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             
-            <button className="w-full sm:w-auto border border-slate-200 dark:border-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
+            <a 
+              href="/Md_Mahafuzur_Rahman_Shimul_Resume.pdf"
+              download="Md_Mahafuzur_Rahman_Shimul_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto border border-slate-200 dark:border-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center"
+            >
               Download Resume
               <Download className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
 

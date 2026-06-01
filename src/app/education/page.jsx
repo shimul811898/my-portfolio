@@ -70,8 +70,8 @@ export default function EducationPage() {
   ];
 
   const stats = [
-    { label: "Qualifications", count: "5", icon: BookMarked, color: "text-blue-500 bg-blue-500/10" },
-    { label: "Certifications", count: "3+", icon: Award, color: "text-purple-500 bg-purple-500/10" },
+    { label: "Qualifications", count: "4", icon: BookMarked, color: "text-blue-500 bg-blue-500/10" },
+    { label: "Certifications", count: "4+", icon: Award, color: "text-purple-500 bg-purple-500/10" },
     { label: "GPA Average", count: "4.8+", icon: Star, color: "text-yellow-500 bg-yellow-500/10" },
     { label: "Skills", count: "10+", icon: Globe, color: "text-emerald-500 bg-emerald-500/10" }
   ];

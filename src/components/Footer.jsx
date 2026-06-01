@@ -65,7 +65,7 @@ const Footer = () => {
                                     { icon: <FaGithub />, href: "https://github.com/shimul811898" },
                                     { icon: <FaLinkedinIn />, href: "https://linkedin.com" },
                                     { icon: <FaInstagram />, href: "https://instagram.com" },
-                                    { icon: <FaFacebookF />, href: "#" },
+                                    { icon: <FaFacebookF />, href: "https://www.facebook.com/shimul.islam.02" },
                                 ].map((social, i) => (
                                     <a
                                         key={i}
