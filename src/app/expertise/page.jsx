@@ -18,7 +18,7 @@ export const ExpertisePage = () => {
         { icon: "▲", name: "Next.js", level: "ADVANCED" },
         { icon: "🎨", name: "Tailwind CSS", level: "MASTER" },
         { icon: "🅱️", name: "Bootstrap", level: "MASTER" },
-         { icon: "✨", name: "HeroUI", level: "MASTER" },
+        { icon: "✨", name: "HeroUI", level: "MASTER" },
       ],
     },
     {
@@ -29,6 +29,7 @@ export const ExpertisePage = () => {
         { icon: "⚡", name: "Express.js", level: "ADVANCED" },
         { icon: "🔐", name: "Better Auth", level: "INTERMEDIATE" },
         { icon: "🗄️", name: "MongoDB", level: "ADVANCED" },
+        { icon: "🔥", name: "Firebase", level: "BASIC" },
       ],
     },
     {
@@ -43,17 +44,17 @@ export const ExpertisePage = () => {
       ],
     },
     {
-  title: "TOOLS & SOFTWARE",
-  level: "LEVEL 01",
-  skills: [
-    { icon: "💻", name: "VS Code", level: "MASTER" },
-    { icon: "🌐", name: "Chrome DevTools", level: "ADVANCED" },
-    { icon: "🐙", name: "Git & GitHub", level: "ADVANCED" },
-    { icon: "📦", name: "npm / yarn", level: "ADVANCED" },
-    { icon: "⚡", name: "Netlify", level: "ADVANCED" },
-    { icon: "🎯", name: "Figma", level: "INTERMEDIATE" },
-  ],
-},
+      title: "TOOLS & SOFTWARE",
+      level: "LEVEL 01",
+      skills: [
+        { icon: "💻", name: "VS Code", level: "MASTER" },
+        { icon: "🌐", name: "Chrome DevTools", level: "ADVANCED" },
+        { icon: "🐙", name: "Git & GitHub", level: "ADVANCED" },
+        { icon: "📦", name: "npm / yarn", level: "ADVANCED" },
+        { icon: "⚡", name: "Netlify", level: "ADVANCED" },
+        { icon: "🎯", name: "Figma", level: "INTERMEDIATE" },
+      ],
+    },
   ];
 
   return (
