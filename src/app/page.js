@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ThemeToggle from "@/components/ThemeToggle";
 import AboutPage from "./about/page";
 import ExpertisePage from "./expertise/page";
+import EducationPage from "./education/page";
 import ProjectsPage from "./project/page";
 import BlogPage from "./Blog/page";
 import Footer from "../components/Footer";
@@ -11,11 +12,25 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <AboutPage />
-      <ExpertisePage />
-      <ProjectsPage />
-      <BlogPage />
+      <section id="home">
+        <Hero />
+      </section>
+      <section id="about">
+        <AboutPage />
+      </section>
+      <section id="expertise">
+        <ExpertisePage />
+      </section>
+     
+      <section id="project">
+        <ProjectsPage />
+      </section>
+       <section id="education">
+        <EducationPage />
+      </section>
+      <section id="blog">
+        <BlogPage />
+      </section>
       <ThemeToggle />
       <Footer />
     </>

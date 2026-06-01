@@ -8,23 +8,75 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      if (isHome) {
+        const sections = ["home", "about", "expertise", "education", "project", "blog"];
+        let current = "home";
+        
+        // Use scroll position relative to viewport offset for high-accuracy section detection
+        const scrollPosition = window.scrollY + 160; 
+
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              current = id;
+            }
+          }
+        }
+        
+        // Fallback for reaching bottom of page
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+          current = "blog";
+        }
+
+        setActiveSection(current);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Expertise", href: "/expertise" },
-    { label: "Projects", href: "/project" },
-    { label: "Blog", href: "/Blog" },
+    { label: "Home", sectionId: "home", href: "/" },
+    { label: "About", sectionId: "about", href: "/about" },
+    { label: "Expertise", sectionId: "expertise", href: "/expertise" },
+    { label: "Projects", sectionId: "project", href: "/project" },
+    { label: "Education", sectionId: "education", href: "/education" },
+    { label: "Blog", sectionId: "blog", href: "/Blog" },
   ];
+
+  const handleNavClick = (e, link) => {
+    if (isHome) {
+      e.preventDefault();
+      const el = document.getElementById(link.sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      setActiveSection(link.sectionId);
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const getHref = (link) => {
+    if (isHome) return `#${link.sectionId}`;
+    return `/#${link.sectionId}`;
+  };
+
+  const checkActive = (link) => {
+    if (isHome) return activeSection === link.sectionId;
+    const normalize = (p) => p.toLowerCase().replace(/\/$/, "");
+    return normalize(pathname) === normalize(link.href);
+  };
 
   return (
     <header
@@ -36,7 +88,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
         
-        {/* ── LOGO (PREMIUM ANIMATED) ────────────────────── */}
         <Link 
           href="/" 
           className="flex items-center gap-2.5 font-bold text-xl tracking-tight group transition-transform active:scale-95"
@@ -47,25 +98,25 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* ── DESKTOP NAV (SPOTLIGHT ACTIVE EFFECT) ──────── */}
+        {/* ── DESKTOP NAV ──────── */}
         <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const active = checkActive(link);
             return (
               <Link
                 key={link.label}
-                href={link.href}
-                className={`relative px-4 py-2 rounded-full transition-all duration-300 group
-                  ${isActive 
-                    ? "text-blue-600 dark:text-cyan-400" 
+                href={getHref(link)}
+                onClick={(e) => handleNavClick(e, link)}
+                className={`relative px-4 py-2 rounded-full transition-all duration-300 group cursor-pointer
+                  ${active 
+                    ? "text-blue-600 dark:text-cyan-400 font-semibold" 
                     : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                   }`}
               >
-                {/* Background pill effect on hover/active */}
-                <span className={`absolute inset-0 rounded-full -z-10 transition-all duration-300 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100
-                  ${isActive 
-                    ? "bg-blue-500/10 dark:bg-cyan-500/10 opacity-100! scale-100!" 
-                    : "bg-slate-100 dark:bg-slate-800/60"
+                <span className={`absolute inset-0 rounded-full -z-10 transition-all duration-300
+                  ${active 
+                    ? "bg-blue-500/10 dark:bg-cyan-500/10 opacity-100 scale-100" 
+                    : "bg-slate-100 dark:bg-slate-800/60 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
                   }`} 
                 />
                 <span className="relative z-10">{link.label}</span>
@@ -102,7 +153,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ── MOBILE DRAWER NAVIGATION ───────────────────── */}
+      {/* ── MOBILE DRAWER ───────────────────── */}
       <div 
         className={`md:hidden absolute top-full left-0 w-full border-b transition-all duration-300 ease-in-out backdrop-blur-2xl
           ${mobileMenuOpen 
@@ -116,14 +167,14 @@ export default function Header() {
       >
         <nav className="px-6 py-6 flex flex-col space-y-2">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const active = checkActive(link);
             return (
               <Link
                 key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-base font-medium py-3 px-4 rounded-xl transition-all
-                  ${isActive 
+                href={getHref(link)}
+                onClick={(e) => handleNavClick(e, link)}
+                className={`text-base font-medium py-3 px-4 rounded-xl transition-all cursor-pointer
+                  ${active 
                     ? "bg-blue-500/10 dark:bg-cyan-500/10 text-blue-600 dark:text-cyan-400 font-semibold" 
                     : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-100"
                   }`}

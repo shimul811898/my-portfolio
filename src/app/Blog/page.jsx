@@ -1,9 +1,11 @@
 "use client";
 import Header from "@/components/Header";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Calendar, Clock, Tag, Search } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { usePathname } from "next/navigation";
 
 const BLOG_POSTS = [
     {
@@ -38,6 +40,8 @@ const BLOG_POSTS = [
 const CATEGORIES = ["All", "Development", "Design", "CSS"];
 
 export function BlogPage() {
+    const pathname = usePathname();
+    const isStandalone = pathname === "/Blog";
     const { theme } = useTheme();
     const dark = theme === "dark";
 
@@ -53,8 +57,17 @@ export function BlogPage() {
 
     return (
         <div>
-            <Header />
-            <div className={`min-h-screen pt-28 pb-16 transition-colors duration-500 overflow-x-hidden font-sans
+            {isStandalone && (
+                <>
+                    <Header />
+                    <ThemeToggle />
+                </>
+            )}
+            <div className={`transition-colors duration-500 overflow-x-hidden font-sans
+                ${isStandalone 
+                    ? "min-h-screen pt-28 pb-16" 
+                    : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
+                }
                 ${dark ? "bg-[#030712] text-slate-100" : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"}`}
             >
                 {dark && (

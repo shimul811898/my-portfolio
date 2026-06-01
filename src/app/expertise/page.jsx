@@ -1,9 +1,11 @@
 "use client";
 import Header from "@/components/Header";
-
 import { useTheme } from "@/components/ThemeProvider";
+import { usePathname } from "next/navigation";
 
 export const ExpertisePage = () => {
+  const pathname = usePathname();
+  const isStandalone = pathname === "/expertise";
   const { theme } = useTheme();
   const dark = theme === "dark";
 
@@ -42,10 +44,14 @@ export const ExpertisePage = () => {
 
   return (
    <div>
-     <Header />
-     <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden font-sans
-      ${dark ? "bg-[#030712] text-slate-100" : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"}`}
-    >
+     {isStandalone && <Header />}
+     <div className={`transition-colors duration-500 overflow-x-hidden font-sans
+       ${isStandalone 
+         ? "min-h-screen pt-24 pb-20 bg-gradient-to-br" 
+         : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
+       }
+       ${dark ? "bg-[#030712] text-slate-100" : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"}`}
+     >
       {dark && (
         <>
           <div className="fixed inset-0 pointer-events-none z-0

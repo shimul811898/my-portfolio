@@ -1,5 +1,8 @@
+"use client";
+
 import Header from "@/components/Header";
 import ThemeToggle from "@/components/ThemeToggle";
+import { usePathname } from "next/navigation";
 
 const InstagramIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -26,6 +29,9 @@ const XIcon = (props) => (
 );
 
 export default function AboutPage() {
+  const pathname = usePathname();
+  const isStandalone = pathname === "/about";
+
   const experiences = [
     {
       title: " Frontend Web Developer",
@@ -46,10 +52,19 @@ export default function AboutPage() {
 
   return (
     <>
-      <Header />
-      <ThemeToggle />
+      {isStandalone && (
+        <>
+          <Header />
+          <ThemeToggle />
+        </>
+      )}
 
-      <main className="pt-28 pb-16 min-h-screen px-4 md:px-8 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+      <main className={`px-4 md:px-8 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300
+        ${isStandalone 
+          ? "pt-28 pb-16 min-h-screen" 
+          : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
+        }`}
+      >
         <div className="max-w-5xl mx-auto space-y-8">
 
           <header
@@ -114,9 +129,12 @@ export default function AboutPage() {
 
                   </div>
 
-                  <button className="w-full py-3 bg-primary hover:bg-blue-600 text-white rounded-2xl font-medium transition-all transform active:scale-95 shadow-lg shadow-blue-500/10 dark:shadow-none cursor-pointer">
+                  <a 
+                    href="mailto:mahafuzur181163@gmail.com"
+                    className="w-full block py-3 bg-primary hover:bg-blue-600 text-white rounded-2xl font-medium transition-all transform active:scale-95 shadow-lg shadow-blue-500/10 dark:shadow-none cursor-pointer"
+                  >
                     Let's Connect
-                  </button>
+                  </a>
                 </div>
               </section>
             </div>
