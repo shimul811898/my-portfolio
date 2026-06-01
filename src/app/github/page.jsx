@@ -110,7 +110,6 @@ export default function GitHubPage() {
         }
         ${dark ? "bg-[#030712] text-slate-100" : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"}`}
       >
-        {/* Ambient Grid */}
         {dark && (
           <>
             <div className="fixed inset-0 pointer-events-none z-0
@@ -123,7 +122,7 @@ export default function GitHubPage() {
 
         <main className="relative max-w-6xl mx-auto px-6 z-10">
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto ">
             <h2 className={`text-xs uppercase font-mono font-bold tracking-[0.2em] mb-3
               ${dark ? "text-cyan-400" : "text-blue-600"}`}>
               Activity & Metrics
@@ -144,7 +143,7 @@ export default function GitHubPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 100 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`p-6 rounded-3xl border flex gap-4 transition-all duration-300 hover:shadow-lg
                   ${dark 
                     ? "bg-slate-900/50 border-white/5 hover:border-white/10" 
@@ -346,7 +345,7 @@ export default function GitHubPage() {
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 80 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
                     className={`p-6 rounded-3xl border flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1.5
                       ${dark 
                         ? "bg-slate-900/40 border-white/5 hover:bg-slate-900/80 hover:border-white/10" 

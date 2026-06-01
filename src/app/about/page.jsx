@@ -45,7 +45,7 @@ export default function AboutPage() {
       year: "2025 - Present",
     },
     {
-      title: "Marnt Stack Web Developer",
+      title: "Mern Stack Web Developer",
       company: "Personal Projects & Open Source",
       year: "2025",
     },
