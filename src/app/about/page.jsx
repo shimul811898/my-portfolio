@@ -81,7 +81,7 @@ export default function AboutPage() {
               About Me
             </h1>
             <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed px-4 max-w-xl mx-auto">
-              I’m a CSE student &  Marnt Stack  Web Developer passionate about building modern, responsive, and scalable web applications.
+              I’m a CSE student &  Mern Stack  Web Developer passionate about building modern, responsive, and scalable web applications.
             </p>
           </header>
 
