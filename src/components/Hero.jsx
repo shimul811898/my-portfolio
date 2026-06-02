@@ -118,7 +118,7 @@ export default function Hero() {
             CSE Student & Full-Stack Developer focused on building modern, responsive, and high-performance web applications with clean UI and smooth UX.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row mb-8 items-center justify-center lg:justify-start gap-4 pt-2 ">
             <a 
               href="mailto:mahafuzur181163@gmail.com?subject=Hi Shimul, Let's Connect!&body=Hello Shimul,"
               className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-blue-500/20 dark:shadow-none hover:-translate-y-0.5 active:translate-y-0 cursor-pointer group text-center"
@@ -132,7 +132,7 @@ export default function Hero() {
               download="Md_Mahafuzur_Rahman_Shimul_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto  border border-slate-200 dark:border-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center sm:grid mb-8 "
+              className="w-full sm:w-auto  border border-slate-200 dark:border-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-900/80 text-slate-700 dark:text-slate-300 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center"
             >
               Download Resume
               <Download className="w-4 h-4 " />
