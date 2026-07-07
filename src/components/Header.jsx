@@ -20,7 +20,6 @@ export default function Header() {
         const sections = ["home", "about", "expertise", "education", "project", "github", "blog"];
         let current = "home";
         
-        // Use scroll position relative to viewport offset for high-accuracy section detection
         const scrollPosition = window.scrollY + 160; 
 
         for (const id of sections) {
@@ -34,7 +33,6 @@ export default function Header() {
           }
         }
         
-        // Fallback for reaching bottom of page
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
           current = "blog";
         }
@@ -50,8 +48,8 @@ export default function Header() {
     { label: "Home", sectionId: "home", href: "/" },
     { label: "About", sectionId: "about", href: "/about" },
     { label: "Expertise", sectionId: "expertise", href: "/expertise" },
-    { label: "Projects", sectionId: "project", href: "/project" },
     { label: "Education", sectionId: "education", href: "/education" },
+    { label: "Projects", sectionId: "project", href: "/project" },
     { label: "GitHub", sectionId: "github", href: "/github" },
   ];
 
@@ -98,7 +96,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* ── DESKTOP NAV ──────── */}
         <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
           {navLinks.map((link) => {
             const active = checkActive(link);
@@ -133,7 +130,6 @@ export default function Header() {
           <span>Get In Touch</span>
         </a>
 
-        {/* ── MOBILE CONTROLS ────────────────────────────── */}
         <div className="flex md:hidden items-center gap-3">
           <a
             href="mailto:mahafuzur181163@gmail.com"
@@ -153,7 +149,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ── MOBILE DRAWER ───────────────────── */}
       <div 
         className={`md:hidden absolute top-full left-0 w-full border-b transition-all duration-300 ease-in-out backdrop-blur-2xl
           ${mobileMenuOpen 
