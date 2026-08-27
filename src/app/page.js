@@ -4,6 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import AboutPage from "./about/page";
 import ExpertisePage from "./expertise/page";
 import EducationPage from "./education/page";
+import CertificationsPage from "./certifications/page";
 import ProjectsPage from "./project/page";
 import GitHubPage from "./github/page";
 import Footer from "../components/Footer";
@@ -23,6 +24,9 @@ export default function Home() {
       </section>
       <section id="education">
         <EducationPage />
+      </section>
+      <section id="certifications">
+        <CertificationsPage />
       </section>
       <section id="project">
         <ProjectsPage />

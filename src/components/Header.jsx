@@ -17,7 +17,7 @@ export default function Header() {
       setScrolled(window.scrollY > 20);
 
       if (isHome) {
-        const sections = ["home", "about", "expertise", "education", "project", "github", "blog"];
+        const sections = ["home", "about", "expertise", "education", "certifications", "project", "github", "blog"];
         let current = "home";
         
         const scrollPosition = window.scrollY + 160; 
@@ -49,6 +49,7 @@ export default function Header() {
     { label: "About", sectionId: "about", href: "/about" },
     { label: "Expertise", sectionId: "expertise", href: "/expertise" },
     { label: "Education", sectionId: "education", href: "/education" },
+    { label: "Certifications", sectionId: "certifications", href: "/certifications" },
     { label: "Projects", sectionId: "project", href: "/project" },
     { label: "GitHub", sectionId: "github", href: "/github" },
   ];
