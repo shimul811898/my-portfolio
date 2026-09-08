@@ -55,6 +55,17 @@ export default function ProjectsPage() {
       image: "/assest/DocAppoint.png",
       isEmbedImage: true
     },
+      {
+      title: "MotoBike",
+      description: "A modern motorcycle platform designed with a clean, premium, and responsive UI. This project focuses on creating a smooth user experience for exploring bikes, categories, dashboards, and bookings",
+      category: "FULLSTACK",
+      tags: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "Node.js"],
+      liveUrl: "https://motor-bike.vercel.app",
+      githubUrlClint: "https://github.com/shimul811898/MotorBike",
+      githubUrlServer:"https://github.com/shimul811898/MotorBike-Sever",
+      image: "/assest/MotoBike.png",
+      isEmbedImage: true
+    },
     {
       title: "SunCart - Summer Essentials eCommerce",
       description: "A modern full-stack eCommerce platform built with Next.js where users can browse summer essentials, view product details, manage cart, and use secure authentication with a smooth responsive UI.",
