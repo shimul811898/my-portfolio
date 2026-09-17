@@ -40,7 +40,7 @@ export default function ProjectsPage() {
       ],
       liveUrl: "https://medi-care-mocha.vercel.app",
       githubUrlClint: "https://github.com/shimul811898/MediCare",
-      githubUrlServer:"https://github.com/shimul811898/MediCare-Sever",
+      githubUrlServer: "https://github.com/shimul811898/MediCare-Sever",
       image: "/assest/Medicare.png",
       isEmbedImage: true,
     },
@@ -51,19 +51,30 @@ export default function ProjectsPage() {
       tags: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "Node.js"],
       liveUrl: "https://docappoint-seven.vercel.app",
       githubUrlClint: "https://github.com/shimul811898/DocAppoint",
-      githubUrlServer:"https://github.com/shimul811898/DocAppoint-Server",
+      githubUrlServer: "https://github.com/shimul811898/DocAppoint-Server",
       image: "/assest/DocAppoint.png",
       isEmbedImage: true
     },
-      {
+    {
       title: "MotoBike",
       description: "A modern motorcycle platform designed with a clean, premium, and responsive UI. This project focuses on creating a smooth user experience for exploring bikes, categories, dashboards, and bookings",
       category: "FULLSTACK",
       tags: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "Node.js"],
       liveUrl: "https://motor-bike.vercel.app",
       githubUrlClint: "https://github.com/shimul811898/MotorBike",
-      githubUrlServer:"https://github.com/shimul811898/MotorBike-Sever",
+      githubUrlServer: "https://github.com/shimul811898/MotorBike-Sever",
       image: "/assest/MotoBike.png",
+      isEmbedImage: true
+    },
+    {
+      title: "Tea House - Tea Shop & eCommerce",
+      description: "A modern full-stack Tea House eCommerce platform built with Next.js where users can explore different tea products, view product details, manage their cart, place orders, and securely authenticate with a smooth and responsive user experience.",
+      category: "FULLSTACK",
+      tags: ["Next.js", "Node.js", "Express.js", "MongoDB", "JWT", "Better Auth", "Tailwind CSS", "Proxy"],
+      liveUrl: "https://tea-house-client.vercel.app",
+      githubUrlClint: "https://github.com/shimul811898/Tea-House-client",
+      githubUrlServer: "https://github.com/shimul811898/Tea-House-Server",
+      image: "/assest/teahouse.png",
       isEmbedImage: true
     },
     {
@@ -76,6 +87,7 @@ export default function ProjectsPage() {
       image: "/assest/KeenKeeper.png",
       isEmbedImage: true
     },
+
     {
       title: "AI-Module-Hub",
       description: "A modern AI subscription platform that provides access to multiple leading AI models through a single membership. Users can explore, compare, and utilize powerful AI assistants in one centralized interface with a clean and responsive user experience.",
@@ -86,16 +98,6 @@ export default function ProjectsPage() {
       image: "/assest/Ai-Module.png",
       isEmbedImage: true
     },
-    {
-      title: "DigiTools - Digital Toolbox Platform",
-      description: "An all-in-one digital toolkit web platform offering fast, simple, and browser-based utilities such as image tools, text tools, and more for everyday use.",
-      category: "UI/UX",
-      tags: ["React", "JavaScript", "Tailwind CSS", "DaisyUI", "HTML", "CSS"],
-      liveUrl: "https://b13-a6-digitool.netlify.app",
-      githubUrlClint: "https://github.com/shimul811898/B-13-Assinment-no-6",
-      image: "/assest/DigiTools.png",
-      isEmbedImage: true
-    }
   ];
 
   const filteredProjects = activeFilter === "ALL"
