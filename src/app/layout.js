@@ -1,5 +1,7 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import VisitorTracker from "@/components/VisitorTracker";
+import HeroToastProvider from "@/components/HeroToastProvider";
 
 export const metadata = {
   title: "Shimul - CSE Student | Full-Stack Developer Portfolio",
@@ -10,7 +12,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -29,7 +30,6 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
 
-      
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -52,9 +52,12 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="min-h-full bg-black text-white antialiased transition-colors duration-300">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <VisitorTracker />
+          <HeroToastProvider />
+          {children}
+        </ThemeProvider>
       </body>
-
     </html>
   );
 }

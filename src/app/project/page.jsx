@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import { ExternalLink, Layers, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,89 +20,33 @@ export default function ProjectsPage() {
   const { theme } = useTheme();
   const dark = theme === "dark";
   const [activeFilter, setActiveFilter] = useState("ALL");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const response = await fetch("/api/projects");
+        const data = await response.json();
+        if (data.success && Array.isArray(data.projects)) {
+          setProjects(data.projects);
+        }
+      } catch (error) {
+        console.error("Failed to fetch projects from MongoDB:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProjects();
+  }, []);
 
   const filters = ["ALL", "FULLSTACK", "FRONTEND", "UI/UX"];
 
-  const projects = [
-    {
-      title: "MediCare",
-      description:
-        "A modern full-stack healthcare platform that enables patients to find doctors, book appointments, manage schedules, and access healthcare services through a secure, responsive, and user-friendly interface.",
-      category: "FULLSTACK",
-      tags: [
-        "Next.js",
-        "Express.js",
-        "Node.js",
-        "MongoDB",
-        "Tailwind CSS",
-        "JWT",
-        "Cloudinary"
-      ],
-      liveUrl: "https://medi-care-mocha.vercel.app",
-      githubUrlClint: "https://github.com/shimul811898/MediCare",
-      githubUrlServer: "https://github.com/shimul811898/MediCare-Sever",
-      image: "/assest/Medicare.png",
-      isEmbedImage: true,
-    },
-    {
-      title: "Docappoint - Doctor Appointment Platform",
-      description: "A full-stack doctor appointment booking platform that allows users to search doctors, view profiles, and book appointments online with a smooth and responsive UI.",
-      category: "FULLSTACK",
-      tags: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "Node.js"],
-      liveUrl: "https://docappoint-seven.vercel.app",
-      githubUrlClint: "https://github.com/shimul811898/DocAppoint",
-      githubUrlServer: "https://github.com/shimul811898/DocAppoint-Server",
-      image: "/assest/DocAppoint.png",
-      isEmbedImage: true
-    },
-    {
-      title: "MotoBike",
-      description: "A modern motorcycle platform designed with a clean, premium, and responsive UI. This project focuses on creating a smooth user experience for exploring bikes, categories, dashboards, and bookings",
-      category: "FULLSTACK",
-      tags: ["Next.js", "Express.js", "MongoDB", "Tailwind CSS", "Node.js"],
-      liveUrl: "https://motor-bike.vercel.app",
-      githubUrlClint: "https://github.com/shimul811898/MotorBike",
-      githubUrlServer: "https://github.com/shimul811898/MotorBike-Sever",
-      image: "/assest/MotoBike.png",
-      isEmbedImage: true
-    },
-    {
-      title: "Tea House - Tea Shop & eCommerce",
-      description: "A modern full-stack Tea House eCommerce platform built with Next.js where users can explore different tea products, view product details, manage their cart, place orders, and securely authenticate with a smooth and responsive user experience.",
-      category: "FULLSTACK",
-      tags: ["Next.js", "Node.js", "Express.js", "MongoDB", "JWT", "Better Auth", "Tailwind CSS", "Proxy"],
-      liveUrl: "https://tea-house-client.vercel.app",
-      githubUrlClint: "https://github.com/shimul811898/Tea-House-client",
-      githubUrlServer: "https://github.com/shimul811898/Tea-House-Server",
-      image: "/assest/teahouse.png",
-      isEmbedImage: true
-    },
-    {
-      title: "SunCart - Summer Essentials eCommerce",
-      description: "A modern full-stack eCommerce platform built with Next.js where users can browse summer essentials, view product details, manage cart, and use secure authentication with a smooth responsive UI.",
-      category: "FULLSTACK",
-      tags: ["Next.js", "Tailwind CSS", "HeroUI", "Better Auth", "React Hot Toast", "Vercel"],
-      liveUrl: "https://a8-sun-cart-teal.vercel.app",
-      githubUrlClint: "https://github.com/shimul811898/A8-SunCart",
-      image: "/assest/KeenKeeper.png",
-      isEmbedImage: true
-    },
-
-    {
-      title: "AI-Module-Hub",
-      description: "A modern AI subscription platform that provides access to multiple leading AI models through a single membership. Users can explore, compare, and utilize powerful AI assistants in one centralized interface with a clean and responsive user experience.",
-      category: "FRONTEND",
-      tags: ["React", "JavaScript", "Tailwind CSS", "DaisyUI", "HTML", "CSS"],
-      liveUrl: "https://ai-module-hub.netlify.app",
-      githubUrlClint: "https://github.com/shimul811898/ai-module-hub",
-      image: "/assest/Ai-Module.png",
-      isEmbedImage: true
-    },
-  ];
-
-  const filteredProjects = activeFilter === "ALL"
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
+  const filteredProjects =
+    activeFilter === "ALL"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
 
   return (
     <>
@@ -112,38 +56,62 @@ export default function ProjectsPage() {
           <ThemeToggle />
         </>
       )}
-      <div className={`transition-colors duration-500 overflow-x-hidden font-sans
-        ${isStandalone
-          ? "min-h-screen pt-24 pb-20 bg-gradient-to-br"
-          : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
+      <div
+        className={`transition-colors duration-500 overflow-x-hidden font-sans
+        ${
+          isStandalone
+            ? "min-h-screen pt-24 pb-20 bg-gradient-to-br"
+            : "py-16 border-t border-slate-200/40 dark:border-slate-800/40"
         }
-        ${dark ? "bg-[#030712] text-slate-100" : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"}`}
+        ${
+          dark
+            ? "bg-[#030712] text-slate-100"
+            : "bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 text-slate-900"
+        }`}
       >
         {dark && (
           <>
-            <div className="fixed inset-0 pointer-events-none z-0
-            bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:5rem_5rem]" />
+            <div
+              className="fixed inset-0 pointer-events-none z-0
+            bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:5rem_5rem]"
+            />
             <div className="fixed top-20 right-1/4 w-[400px] h-[400px] pointer-events-none z-0 rounded-full bg-blue-500/5 blur-[120px]" />
             <div className="fixed bottom-20 left-1/4 w-[400px] h-[400px] pointer-events-none z-0 rounded-full bg-purple-500/5 blur-[120px]" />
           </>
         )}
 
         <main className="relative max-w-6xl mx-auto px-6 z-10">
-
           <section className="mb-14 max-w-2xl">
-            <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase rounded-full mb-4
-            ${dark ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20" : "bg-blue-50 text-blue-700 border border-blue-100"}`}>
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase rounded-full mb-4
+            ${
+              dark
+                ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+                : "bg-blue-50 text-blue-700 border border-blue-100"
+            }`}
+            >
               <Layers className="w-3.5 h-3.5" /> Showcase
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-none mb-4">
               Selected{" "}
-              <span className={`bg-clip-text text-transparent bg-gradient-to-r
-              ${dark ? "from-cyan-400 to-blue-500" : "from-blue-600 to-indigo-600"}`}>
+              <span
+                className={`bg-clip-text text-transparent bg-gradient-to-r
+              ${
+                dark
+                  ? "from-cyan-400 to-blue-500"
+                  : "from-blue-600 to-indigo-600"
+              }`}
+              >
                 Projects
               </span>
             </h1>
-            <p className={`text-base md:text-lg leading-relaxed ${dark ? "text-slate-400" : "text-slate-600"}`}>
-              A curated gallery of production deployments, architectural case studies, and open-source contributions.
+            <p
+              className={`text-base md:text-lg leading-relaxed ${
+                dark ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              A curated gallery of production deployments, architectural case
+              studies, and open-source contributions.
             </p>
           </section>
 
@@ -153,135 +121,237 @@ export default function ProjectsPage() {
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 className={`text-xs font-mono font-bold tracking-wider uppercase px-4 py-2 rounded-xl transition-all duration-300
-                ${activeFilter === filter
+                ${
+                  activeFilter === filter
                     ? dark
                       ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]"
                       : "bg-blue-600 text-white shadow-md shadow-blue-500/10"
                     : dark
-                      ? "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 border border-transparent"
-                  }`}
+                    ? "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 border border-transparent"
+                }`}
               >
                 {filter}
               </button>
             ))}
           </div>
 
-          <motion.div layout className="grid md:grid-cols-2 gap-8">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  layout
-                  key={project.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5, delay: index * 0.05, type: "spring", stiffness: 100 }}
-                  whileHover={{ y: -8 }}
-                  className={`group relative rounded-3xl border overflow-hidden flex flex-col h-full transition-all duration-500
-                  ${dark
-                      ? "border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-xl hover:border-cyan-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-                      : "border-slate-200 bg-white hover:border-blue-300 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/5"
-                    }`}
+          {loading ? (
+            <div className="grid md:grid-cols-2 gap-8">
+              {[1, 2, 3, 4].map((n) => (
+                <div
+                  key={n}
+                  className={`rounded-3xl border overflow-hidden flex flex-col h-96 animate-pulse ${
+                    dark
+                      ? "border-white/10 bg-white/5"
+                      : "border-slate-200 bg-white"
+                  }`}
                 >
-                  <div className={`relative h-56 w-full overflow-hidden flex items-center justify-center border-b text-6xl select-none transition-colors duration-500
-                  ${dark ? "border-white/5 bg-white/5" : "border-slate-100 bg-slate-50"}`}
-                  >
-                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-gradient-to-b
-                    ${dark ? "from-cyan-500/10 via-transparent to-transparent" : "from-blue-500/5 via-transparent to-transparent"}`}
+                  <div
+                    className={`h-56 w-full ${
+                      dark ? "bg-white/5" : "bg-slate-100"
+                    }`}
+                  />
+                  <div className="p-6 flex flex-col gap-3 flex-grow">
+                    <div
+                      className={`h-4 w-24 rounded ${
+                        dark ? "bg-white/10" : "bg-slate-200"
+                      }`}
                     />
-
-                    {project.isEmbedImage ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    <div
+                      className={`h-6 w-3/4 rounded ${
+                        dark ? "bg-white/10" : "bg-slate-200"
+                      }`}
+                    />
+                    <div
+                      className={`h-4 w-full rounded ${
+                        dark ? "bg-white/5" : "bg-slate-100"
+                      }`}
+                    />
+                    <div className="flex gap-2 mt-auto">
+                      <div
+                        className={`h-4 w-16 rounded ${
+                          dark ? "bg-white/10" : "bg-slate-200"
+                        }`}
                       />
-                    ) : (
-                      <span className="transition-transform duration-500 group-hover:scale-125 group-hover:rotate-6 drop-shadow-2xl">
-                        {project.image}
-                      </span>
-                    )}
-
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`absolute top-4 right-4 p-2.5 rounded-full border opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 z-20
-                      ${dark ? "bg-slate-950/80 text-cyan-400 border-white/10" : "bg-white/90 text-blue-600 border-slate-200"}`}
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
+                      <div
+                        className={`h-4 w-16 rounded ${
+                          dark ? "bg-white/10" : "bg-slate-200"
+                        }`}
+                      />
+                    </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <motion.div layout className="grid md:grid-cols-2 gap-8">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    layout
+                    key={project._id || project.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.05,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                    whileHover={{ y: -8 }}
+                    className={`group relative rounded-3xl border overflow-hidden flex flex-col h-full transition-all duration-500
+                    ${
+                      dark
+                        ? "border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-xl hover:border-cyan-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                        : "border-slate-200 bg-white hover:border-blue-300 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/5"
+                    }`}
+                  >
+                    <div
+                      className={`relative h-56 w-full overflow-hidden flex items-center justify-center border-b text-6xl select-none transition-colors duration-500
+                      ${dark ? "border-white/5 bg-white/5" : "border-slate-100 bg-slate-50"}`}
+                    >
+                      <div
+                        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-gradient-to-b
+                        ${
+                          dark
+                            ? "from-cyan-500/10 via-transparent to-transparent"
+                            : "from-blue-500/5 via-transparent to-transparent"
+                        }`}
+                      />
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-[10px] tracking-widest font-mono font-bold uppercase
-                      ${dark ? "text-cyan-400" : "text-blue-600"}`}>
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl font-bold mb-2 tracking-tight group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {project.title}
-                    </h3>
-
-                    <p className={`text-sm leading-relaxed mb-6 flex-grow ${dark ? "text-slate-400" : "text-slate-600"}`}>
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className={`text-[10px] font-mono px-2.5 py-1 rounded-md font-medium border
-                          ${dark
-                              ? "bg-white/5 text-slate-300 border-white/5"
-                              : "bg-slate-50 text-slate-600 border-slate-100"
-                            }`}
-                        >
-                          {tag}
+                      {project.isEmbedImage ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <span className="transition-transform duration-500 group-hover:scale-125 group-hover:rotate-6 drop-shadow-2xl">
+                          {project.image}
                         </span>
-                      ))}
-                    </div>
+                      )}
 
-                    <div className={`flex items-center gap-4 pt-4 border-t ${dark ? "border-white/5" : "border-slate-100"}`}>
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
-                        ${dark ? "text-slate-200 hover:text-cyan-400" : "text-slate-800 hover:text-blue-600"}`}
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" /> Live Demo
-                      </a>
-                      <a
-                        href={project.githubUrlClint}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
-                        ${dark ? "text-slate-400 hover:text-white" : "text-slate-500 hover:text-slate-800"}`}
-                      >
-                        <GithubIcon className="w-3.5 h-3.5" /><span className="text-[10px]" >Source Code (CLient Side)</span>
-                      </a>
-                      {project.githubUrlServer && (
+                      {project.liveUrl && (
                         <a
-                          href={project.githubUrlServer}
+                          href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
-                          ${dark ? "text-slate-400 hover:text-white" : "text-slate-500 hover:text-slate-800"}`}
+                          className={`absolute top-4 right-4 p-2.5 rounded-full border opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 z-20
+                          ${
+                            dark
+                              ? "bg-slate-950/80 text-cyan-400 border-white/10"
+                              : "bg-white/90 text-blue-600 border-slate-200"
+                          }`}
                         >
-                          <GithubIcon className="w-3.5 h-3.5" /> <span className="text-[10px]">Source Code (Server Side)</span>
+                          <ArrowUpRight className="w-4 h-4" />
                         </a>
                       )}
                     </div>
-                  </div>
 
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center justify-between mb-3">
+                        <span
+                          className={`text-[10px] tracking-widest font-mono font-bold uppercase
+                          ${dark ? "text-cyan-400" : "text-blue-600"}`}
+                        >
+                          {project.category}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-bold mb-2 tracking-tight group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p
+                        className={`text-sm leading-relaxed mb-6 flex-grow ${
+                          dark ? "text-slate-400" : "text-slate-600"
+                        }`}
+                      >
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {project.tags &&
+                          project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className={`text-[10px] font-mono px-2.5 py-1 rounded-md font-medium border
+                              ${
+                                dark
+                                  ? "bg-white/5 text-slate-300 border-white/5"
+                                  : "bg-slate-50 text-slate-600 border-slate-100"
+                              }`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                      </div>
+
+                      <div
+                        className={`flex items-center gap-4 pt-4 border-t ${
+                          dark ? "border-white/5" : "border-slate-100"
+                        }`}
+                      >
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
+                            ${
+                              dark
+                                ? "text-slate-200 hover:text-cyan-400"
+                                : "text-slate-800 hover:text-blue-600"
+                            }`}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" /> Live Demo
+                          </a>
+                        )}
+                        {project.githubUrlClint && (
+                          <a
+                            href={project.githubUrlClint}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
+                            ${
+                              dark
+                                ? "text-slate-400 hover:text-white"
+                                : "text-slate-500 hover:text-slate-800"
+                            }`}
+                          >
+                            <GithubIcon className="w-3.5 h-3.5" />
+                            <span className="text-[10px]">
+                              Source Code (Client Side)
+                            </span>
+                          </a>
+                        )}
+                        {project.githubUrlServer && (
+                          <a
+                            href={project.githubUrlServer}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase transition-colors
+                            ${
+                              dark
+                                ? "text-slate-400 hover:text-white"
+                                : "text-slate-500 hover:text-slate-800"
+                            }`}
+                          >
+                            <GithubIcon className="w-3.5 h-3.5" />{" "}
+                            <span className="text-[10px]">
+                              Source Code (Server Side)
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
 
           <div className="flex justify-center mt-12 mb-6">
             <a
@@ -289,15 +359,16 @@ export default function ProjectsPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 transform hover:-translate-y-1 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)]
-              ${dark
+              ${
+                dark
                   ? "bg-slate-900 hover:bg-slate-850 text-white border border-white/10 hover:border-white/20"
-                  : "bg-[#0f172a] hover:bg-[#1e293b] text-white"}`}
+                  : "bg-[#0f172a] hover:bg-[#1e293b] text-white"
+              }`}
             >
               <span>View All Projects on GitHub</span>
               <span className="text-xs">❯</span>
             </a>
           </div>
-
         </main>
       </div>
     </>
